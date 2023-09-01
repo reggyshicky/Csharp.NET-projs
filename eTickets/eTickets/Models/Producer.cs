@@ -9,6 +9,9 @@ namespace eTickets.Models
         public string ProfilePictureURL { get; set; }
         public string FullName { get; set; }
         public string Bio { get; set; }
+
+        //Relationships
+        public List<Movie> Movies { get; set; }
     }
 }
 //code to be refactored later, baseclass will be created and then we will inherit, no worries
