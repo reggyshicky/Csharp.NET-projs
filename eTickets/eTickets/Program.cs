@@ -13,7 +13,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
 
 var app = builder.Build();
-
+// Call the Seed method from AppDbInitializer
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    AppDbInitializer.Seed(app); // Pass the app instance directly
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
