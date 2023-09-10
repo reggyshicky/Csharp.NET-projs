@@ -1,0 +1,37 @@
+﻿@model Category
+
+<form method="post" asp-action="Delete">
+    <input asp-for="Id" hidden />
+    @* The <input asp-for="Id" hidden /> element is typically used in a web form when you want to include the Id property as part of the form data, 
+    but you don't want the user to see or modify this value directly. This is commonly used in scenarios where you are performing an action like
+    deleting a record, and you need to send the Id of the record to the server, but you don't want the user to tamper with or see this value in 
+    the form *@
+    <div class="border p-3 mt=4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Category</h2>
+            <hr />
+        </div>
+        @* <div asp-validation-summary="All"></div> *@
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" disabled class=" text-danger"></span>
+        </div>
+        <div class="mb-3"> 
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" disabled class=" text-danger"></span>
+
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
+         
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
